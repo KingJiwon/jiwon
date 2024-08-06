@@ -1,11 +1,11 @@
 import React from 'react';
 import './style/App.scss';
-import Main from './pages/Main';
+import VideoBackground from './components/VideoBackground';
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <VideoBackground />
     </div>
   );
 }
