@@ -38,23 +38,18 @@ export default function VideoBackground() {
       video.pause();
     });
 
-    const scrubTimeline = () => {
+    once(video, 'loadedmetadata', () => {
       gsap.to(video, {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
           end: 'bottom bottom',
           scrub: true,
-          onUpdate: (self) => {
-            const duration = video.duration || 1;
-            video.currentTime = duration * self.progress;
-          },
         },
-        ease: 'none',
+        currentTime: video.duration,
+        ease: 'true', // 선형 애니메이션을 설정합니다.
       });
-    };
-
-    once(video, 'loadedmetadata', scrubTimeline);
+    });
 
     setTimeout(() => {
       fetch(src)
@@ -69,11 +64,9 @@ export default function VideoBackground() {
           });
 
           video.setAttribute('src', blobURL);
-          video.currentTime = t + 0.03;
-
-          scrubTimeline();
+          video.currentTime = t + 0.01;
         });
-    }, 500);
+    }, 1000);
   }, []);
 
   return (
