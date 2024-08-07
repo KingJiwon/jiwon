@@ -47,7 +47,7 @@ export default function VideoBackground() {
           scrub: true,
         },
         currentTime: video.duration,
-        ease: 'true', // 선형 애니메이션을 설정합니다.
+        ease: 'true',
       });
     });
 
@@ -64,7 +64,7 @@ export default function VideoBackground() {
           });
 
           video.setAttribute('src', blobURL);
-          video.currentTime = t + 0.01;
+          video.currentTime = t + 0.05;
         });
     }, 1000);
   }, []);
@@ -77,7 +77,7 @@ export default function VideoBackground() {
         muted
         playsInline
       >
-        <source src="/video/bg-video.mp4" type="video/mp4" />
+        <source src="/video/bg-video-opt.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
