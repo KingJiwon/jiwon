@@ -1,0 +1,31 @@
+// utils
+@mixin flex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexVerticalCenter {
+  display: flex;
+  justify-content: center;
+}
+@mixin flexHorizontalCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin inner {
+  display: inline-block;
+  width: 1280px;
+}

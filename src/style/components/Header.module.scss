@@ -1,0 +1,22 @@
+@import '../styles';
+
+.container {
+  @include flexVerticalCenter;
+  position: fixed;
+  top: 3rem;
+  width: 100%;
+  .inner {
+    @include inner;
+    display: flex;
+    justify-content: flex-end;
+    .navigator {
+      display: flex;
+      justify-content: space-between;
+      width: 50rem;
+      li {
+        font-size: 2.4rem;
+        font-family: $main-font-semi-bold;
+      }
+    }
+  }
+}

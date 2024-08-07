@@ -5,7 +5,11 @@ import styles from '../style/pages/videobackground.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function VideoBackground() {
+interface VideoBackgroundProps {
+  children?: React.ReactNode;
+}
+
+export default function VideoBackground({ children }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -80,6 +84,11 @@ export default function VideoBackground() {
         <source src="/video/bg-video-opt.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      {children}
     </div>
   );
 }
+
+VideoBackground.defaultProps = {
+  children: null,
+};
