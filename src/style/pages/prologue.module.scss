@@ -4,11 +4,12 @@
   @include flexColumnCenter;
   width: 100vw;
   height: 100vh;
-  border-bottom: 1px solid tomato;
   .role {
     font-size: 6.2rem;
+    font-family: $main-font-bold;
   }
   .ment {
     font-size: 4rem;
+    font-family: $main-font-medium;
   }
 }
