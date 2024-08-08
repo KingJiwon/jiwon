@@ -4,6 +4,7 @@ import './style/App.scss';
 import VideoBackground from './components/VideoBackground';
 import Header from './components/Header';
 import Prologue from './components/Prologue';
+import Info from './components/Info';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <VideoBackground>
         <Header />
         <Prologue />
+        <Info />
       </VideoBackground>
     </div>
   );
