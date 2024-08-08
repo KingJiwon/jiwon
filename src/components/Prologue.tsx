@@ -17,7 +17,7 @@ export default function Prologue() {
 
     if (!roleElement || !mentElement || !containerElement) return undefined;
 
-    // Split ment text into individual spans
+    // span으로 쪼개기
     const mentText = mentElement.textContent;
     mentElement.innerHTML = mentText
       ? mentText
@@ -28,7 +28,7 @@ export default function Prologue() {
 
     const mentChars = mentElement.children;
 
-    // GSAP animation for role and ment elements
+    // GSAP animation  role, ment elements
     gsap.fromTo(
       roleElement,
       { opacity: 0, x: -20 },
@@ -44,30 +44,26 @@ export default function Prologue() {
       },
     );
 
-    const scrollTriggerInstance = gsap.fromTo(
-      [roleElement, mentElement],
-      { opacity: 1 },
-      {
-        opacity: 0,
-        scrollTrigger: {
-          trigger: containerElement,
-          start: 'top top', // 컨테이너의 상단과 화면의 상단이 맞닿는 지점
-          end: 'bottom top', // 컨테이너의 하단이 화면의 상단과 맞닿는 지점
-          scrub: 1,
-          onLeave: () => {
-            gsap.to([roleElement, mentElement], { opacity: 0 });
-          },
-          onEnterBack: () => {
-            gsap.to([roleElement, mentElement], { opacity: 1 });
-          },
-        },
+    ScrollTrigger.create({
+      trigger: containerElement,
+      start: 'top bottom', // 컨테이너의 상단과 화면의 상단이 맞닿는 지점
+      end: '+400 top', // 컨테이너의 하단이 화면의 상단과 맞닿는 지점
+
+      scrub: 1,
+
+      onLeave: () => {
+        gsap.to([roleElement, mentChars], { opacity: 0 });
       },
-    );
+      onEnterBack: () => {
+        gsap.to([roleElement, mentChars], { opacity: 1 });
+      },
+      onLeaveBack: () => {
+        gsap.to([roleElement, mentChars], { opacity: 0 });
+      },
+    });
 
     return () => {
-      if (scrollTriggerInstance.scrollTrigger) {
-        scrollTriggerInstance.scrollTrigger.kill();
-      }
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
