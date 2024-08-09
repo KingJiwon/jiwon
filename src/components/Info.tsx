@@ -20,27 +20,43 @@ export default function Info() {
 
     if (!containerEl || !toBeEl || !educatedEl) return undefined;
 
-    ScrollTrigger.create({
-      trigger: containerEl,
-      start: '+400 bottom', // 애니메이션 시작 지점
-      end: '+300 top', // 애니메이션 종료 지점
-      scrub: 1,
-      onEnter: () => {
-        gsap.to(toBeEl, { x: 0, opacity: 1, duration: 1 });
-        gsap.to(educatedEl, { x: 0, opacity: 1, duration: 1 });
-      },
-      onLeave: () => {
-        gsap.to(toBeEl, { x: -400, opacity: 0 });
-        gsap.to(educatedEl, { x: +400, opacity: 0, duration: 1 });
-      },
-      onEnterBack: () => {
-        gsap.to([toBeEl, educatedEl], { x: 0, opacity: 1, duration: 1 });
-      },
-      onLeaveBack: () => {
-        gsap.to(toBeEl, { x: -400, opacity: 0, duration: 1 });
-        gsap.to(educatedEl, { x: 400, opacity: 0, duration: 1 });
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerEl,
+        start: '200 bottom', // 애니메이션 시작 지점
+        end: '600 top', // 애니메이션 종료 지점
+        scrub: 1,
+        toggleActions: 'play none none reverse',
+        markers: true,
       },
     });
+    timeline
+      .fromTo(
+        toBeEl,
+        { x: -400, opacity: 0 }, // 시작 상태
+        { x: 0, opacity: 1, duration: 3 }, // 도착 상태
+      )
+      .fromTo(
+        educatedEl,
+        { x: 400, opacity: 0 }, // 시작 상태
+        { x: 0, opacity: 1, duration: 3 }, // 도착 상태
+        '-=3', // toBeEl과 동시에 시작하도록 설정
+      )
+      .to(
+        [toBeEl, educatedEl],
+        { x: 0, opacity: 1, duration: 1 }, // 중앙에 머무름
+        '+=1', // 1초 동안 유지
+      )
+      .to(
+        toBeEl,
+        { y: -400, opacity: 0, duration: 3 }, // 종료 상태
+      )
+      .to(
+        educatedEl,
+        { y: -400, opacity: 0, duration: 3 }, // 종료 상태
+        '-=3', // toBeEl과 동시에 종료하도록 설정
+      );
+
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };

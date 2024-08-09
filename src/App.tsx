@@ -5,6 +5,7 @@ import VideoBackground from './components/VideoBackground';
 import Header from './components/Header';
 import Prologue from './components/Prologue';
 import Info from './components/Info';
+import Skill from './components/Skill';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Header />
         <Prologue />
         <Info />
+        <Skill />
       </VideoBackground>
     </div>
   );
