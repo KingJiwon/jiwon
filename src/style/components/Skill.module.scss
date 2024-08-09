@@ -7,44 +7,74 @@
   .inner {
     @include inner;
     @include flexColumnCenter;
+    gap: 10rem;
     font-family: $main-font-bold;
-    font-size: 3.2rem;
+    font-size: 2.8rem;
     .first_column {
       @include flexColumnCenter;
+      gap: 5rem;
       .front_end_title {
-        margin-bottom: 4.5rem;
+        position: relative;
+        .front_end_title_rottie {
+          position: absolute;
+          top: -2.1rem;
+          left: -9rem;
+        }
       }
       .front_end_content {
-        display: flex;
-        justify-content: space-between;
-        width: 53rem;
+        @include flexSpaceBetween;
+        gap: 4.5rem;
+
+        .front_end_content_left,
+        .front_end_content_right {
+          display: flex;
+          gap: 4.5rem;
+        }
       }
     }
     .second_column {
-      display: flex;
-      justify-content: space-between;
-      width: 95rem;
-      margin-top: 7.5rem;
+      @include flexSpaceBetween;
+      gap: 10rem;
       .back_end {
         @include flexColumnCenter;
+        gap: 4.5rem;
         .back_end_title {
-          margin-bottom: 4.5rem;
+          position: relative;
+          .back_end_title_rottie {
+            position: absolute;
+            top: -0.5rem;
+            left: -7rem;
+          }
         }
         .back_end_content {
-          display: flex;
-          justify-content: space-between;
-          width: 42rem;
+          @include flexSpaceBetween;
+          gap: 4.5rem;
+          .back_end_content_left,
+          .back_end_content_right {
+            display: flex;
+            gap: 4.5rem;
+          }
         }
       }
       .tools {
         @include flexColumnCenter;
+        gap: 4.5rem;
         .tools_title {
-          margin-bottom: 4.5rem;
+          position: relative;
+          .back_end_title_rottie {
+            position: absolute;
+            top: -1.75rem;
+            left: -7rem;
+          }
         }
         .tools_content {
-          display: flex;
-          justify-content: space-between;
-          width: 42rem;
+          @include flexSpaceBetween;
+          gap: 4.5rem;
+          .tools_content_left,
+          .tools_content_right {
+            display: flex;
+            gap: 4.5rem;
+          }
         }
       }
     }

@@ -25,6 +25,11 @@
   align-items: center;
 }
 
+@mixin flexSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
 @mixin inner {
   display: inline-block;
   width: 1280px;
