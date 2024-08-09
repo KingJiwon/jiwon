@@ -1,7 +1,52 @@
 @import '../styles';
 
 .container {
-  background-color: rgb(124, 180, 230);
+  @include flexCenter;
   width: 100vw;
   height: 100vh;
+  .inner {
+    @include inner;
+    @include flexColumnCenter;
+    font-family: $main-font-bold;
+    font-size: 3.2rem;
+    .first_column {
+      @include flexColumnCenter;
+      .front_end_title {
+        margin-bottom: 4.5rem;
+      }
+      .front_end_content {
+        display: flex;
+        justify-content: space-between;
+        width: 53rem;
+      }
+    }
+    .second_column {
+      display: flex;
+      justify-content: space-between;
+      width: 95rem;
+      margin-top: 7.5rem;
+      .back_end {
+        @include flexColumnCenter;
+        .back_end_title {
+          margin-bottom: 4.5rem;
+        }
+        .back_end_content {
+          display: flex;
+          justify-content: space-between;
+          width: 42rem;
+        }
+      }
+      .tools {
+        @include flexColumnCenter;
+        .tools_title {
+          margin-bottom: 4.5rem;
+        }
+        .tools_content {
+          display: flex;
+          justify-content: space-between;
+          width: 42rem;
+        }
+      }
+    }
+  }
 }

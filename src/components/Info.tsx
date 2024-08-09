@@ -27,7 +27,6 @@ export default function Info() {
         end: '600 top', // 애니메이션 종료 지점
         scrub: 1,
         toggleActions: 'play none none reverse',
-        markers: true,
       },
     });
     timeline
@@ -49,11 +48,11 @@ export default function Info() {
       )
       .to(
         toBeEl,
-        { y: -400, opacity: 0, duration: 3 }, // 종료 상태
+        { x: 400, opacity: 0, duration: 3 }, // 종료 상태
       )
       .to(
         educatedEl,
-        { y: -400, opacity: 0, duration: 3 }, // 종료 상태
+        { x: -400, opacity: 0, duration: 3 }, // 종료 상태
         '-=3', // toBeEl과 동시에 종료하도록 설정
       );
 
