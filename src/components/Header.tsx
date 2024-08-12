@@ -8,7 +8,7 @@ export default function Header() {
         <ul className={style.navigator}>
           <li>Prologue</li>
           <li>Info</li>
-          <li>skills</li>
+          <li>Skills</li>
           <li>Projects</li>
           <li>Contact</li>
         </ul>
