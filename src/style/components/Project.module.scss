@@ -4,4 +4,18 @@
   @include flexCenter;
   width: 100vw;
   height: 100vh;
+  .inner {
+    @include inner;
+    @include flexCenter;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    .skill {
+      @include flexCenter;
+      border: 2px solid #ffffff;
+      flex-basis: 23%;
+      height: 30rem;
+      border-radius: 15%;
+    }
+  }
 }
