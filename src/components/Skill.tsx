@@ -76,11 +76,10 @@ export default function Skill() {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: containerEl,
-        start: '+300 bottom', // 애니메이션 시작 지점
+        start: '+250 bottom', // 애니메이션 시작 지점
         end: '+600 top', // 애니메이션 종료 지점
         scrub: true,
         toggleActions: 'play none none reverse',
-        markers: true,
       },
     });
 
