@@ -1,27 +1,48 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import style from '../style/components/Project.module.scss';
+import NotionModal from './NotionModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
   name: string;
   skill: string[];
+  notion: string;
 }
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const projectRefs = useRef<HTMLDivElement[]>([]);
+  const projectRefs = useRef<HTMLButtonElement[]>([]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [notionId, setNotionId] = useState<string>('');
+
   const projects: Project[] = [
-    { name: 'Test-World', skill: ['html5', 'sass', 'javascript'] },
+    {
+      name: 'Test-World',
+      skill: ['html5', 'sass', 'javascript'],
+      notion: 'e8208609c2f94eb4b1fb37505f67429f',
+    },
     {
       name: 'Dev-City',
       skill: ['react', 'redux', 'express', 'mongodb', 'sass'],
+      notion: '80560c9efb7845479fc3eac6215f4bcf',
     },
-    { name: 'Highlightor', skill: ['next', 'mongodb', 'sass'] },
-    { name: 'Portfolio', skill: ['react', 'typescript', 'sass'] },
+    {
+      name: 'Highlightor',
+      skill: ['next', 'mongodb', 'sass'],
+      notion: '68008e4e16d24680a5a7a8309a1ad600',
+    },
+    {
+      name: 'Portfolio',
+      skill: ['react', 'typescript', 'sass'],
+      notion: '933ce2dbf1564107a1f87c0d2c7289e1',
+    },
   ];
+
   useEffect(() => {
     const containerEl = containerRef.current;
     if (!containerEl) return;
@@ -55,12 +76,26 @@ export default function Projects() {
     });
   }, []);
 
+  const handleSkillClick = (url: string) => {
+    setNotionId(url);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setNotionId('');
+  };
+
   return (
     <div className={style.container} ref={containerRef}>
       <div className={style.inner}>
         {projects.map((project, index) => (
-          <div
+          <button
             key={project.name}
+            type="button"
+            onClick={() => {
+              handleSkillClick(project.notion);
+            }}
             className={style.skill}
             ref={(el) => {
               if (el) projectRefs.current[index] = el;
@@ -76,9 +111,12 @@ export default function Projects() {
                 ))}
               </div>
             </div>
-          </div>
+          </button>
         ))}
       </div>
+      {isModalOpen && (
+        <NotionModal handleCloseModal={handleCloseModal} notionId={notionId} />
+      )}
     </div>
   );
 }
