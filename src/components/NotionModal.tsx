@@ -13,7 +13,6 @@ export default function NotionModal({
   notionId,
 }: NotionModalProps) {
   const [notionData, setNotionData] = useState();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +21,6 @@ export default function NotionModal({
           .then((res) => res.json())
           .then((resJson) => {
             setNotionData(resJson);
-            setLoading(false);
           });
       } catch (err) {
         console.error(err);
@@ -42,10 +40,6 @@ export default function NotionModal({
       handleCloseModal();
     }
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div

@@ -11,6 +11,7 @@ interface Project {
   name: string;
   skill: string[];
   notion: string;
+  font: string;
 }
 
 export default function Projects() {
@@ -24,22 +25,26 @@ export default function Projects() {
     {
       name: 'Test-World',
       skill: ['html5', 'sass', 'javascript'],
-      notion: 'e8208609c2f94eb4b1fb37505f67429f',
+      notion: '356844e5e83b45369a9e700871df8af6',
+      font: 'Galmuri9',
     },
     {
       name: 'Dev-City',
       skill: ['react', 'redux', 'express', 'mongodb', 'sass'],
-      notion: '80560c9efb7845479fc3eac6215f4bcf',
+      notion: 'c86bbf8a088a460cbcd0b7bdc15c97c3',
+      font: 'Pretendard-Bold',
     },
     {
       name: 'Highlightor',
       skill: ['next', 'mongodb', 'sass'],
-      notion: '68008e4e16d24680a5a7a8309a1ad600',
+      notion: '986f1157b5bd49d4a34055346bc7b36d',
+      font: 'LeferiPointBlackOblique',
     },
     {
       name: 'Portfolio',
       skill: ['react', 'typescript', 'sass'],
-      notion: '933ce2dbf1564107a1f87c0d2c7289e1',
+      notion: '9968aad1232d4133928e5981c78f17fa',
+      font: 'Pretendard-Bold',
     },
   ];
 
@@ -48,11 +53,10 @@ export default function Projects() {
     if (!containerEl) return;
 
     projectRefs.current.forEach((project, i) => {
-      // const card = project.children[0];
       gsap.fromTo(
         project,
         {
-          y: 100 + i * 50,
+          y: 500 + i * 100,
           opacity: 0,
           scale: 0.6,
           rotateY: -180,
@@ -66,10 +70,11 @@ export default function Projects() {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: containerEl,
-            start: '+250 bottom', // 애니메이션 시작 지점
-            end: '+600 top', // 애니메이션 종료 지점
+            start: '+200 bottom', // 애니메이션 시작 지점
+            end: '+400 top', // 애니메이션 종료 지점
             scrub: true,
             toggleActions: 'play reverse play reverse',
+            markers: true,
           },
         },
       );
@@ -102,7 +107,9 @@ export default function Projects() {
             }}
           >
             <div className={style.card}>
-              <div className={style.front}>{project.name}</div>
+              <div className={style.front} style={{ fontFamily: project.font }}>
+                {project.name}
+              </div>
               <div className={style.back}>
                 {project.skill.map((name) => (
                   <div key={name} className={style.img_container}>
