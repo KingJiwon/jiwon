@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
-import { NotionRenderer } from 'react-notion-x';
-import { ExtendedRecordMap } from 'notion-types';
+import 'react-notion/src/styles.css';
+import { NotionRenderer } from 'react-notion';
 import style from '../style/components/NotionModal.module.scss';
 
 interface NotionModalProps {
@@ -13,7 +12,7 @@ export default function NotionModal({
   handleCloseModal,
   notionId,
 }: NotionModalProps) {
-  const [notionData, setNotionData] = useState<ExtendedRecordMap>();
+  const [notionData, setNotionData] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,14 +20,12 @@ export default function NotionModal({
       try {
         const response = await fetch(
           `https://notion-api.splitbee.io/v1/page/${notionId}`,
-        );
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log(data);
-        setNotionData(data);
-        setLoading(false);
+        )
+          .then((res) => res.json())
+          .then((resJson) => {
+            setNotionData(resJson);
+            setLoading(false);
+          });
       } catch (err) {
         console.error(err);
       }
@@ -51,7 +48,7 @@ export default function NotionModal({
           Close
         </button>
         {notionData && Object.keys(notionData).length > 0 && (
-          <NotionRenderer recordMap={notionData} fullPage darkMode={false} />
+          <NotionRenderer blockMap={notionData} />
         )}
       </div>
     </div>
