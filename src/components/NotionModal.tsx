@@ -18,9 +18,7 @@ export default function NotionModal({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `https://notion-api.splitbee.io/v1/page/${notionId}`,
-        )
+        await fetch(`https://notion-api.splitbee.io/v1/page/${notionId}`)
           .then((res) => res.json())
           .then((resJson) => {
             setNotionData(resJson);
@@ -33,12 +31,30 @@ export default function NotionModal({
     fetchData();
   }, [notionId]);
 
+  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      handleCloseModal();
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Escape') {
+      handleCloseModal();
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className={style.container}>
+    <div
+      className={style.container}
+      onClick={handleClickOutside}
+      onKeyDown={handleKeyDown}
+      tabIndex={-1}
+      role="button"
+    >
       <div className={style.modalContent}>
         <button
           type="button"
