@@ -53,31 +53,44 @@ export default function Projects() {
     if (!containerEl) return;
 
     projectRefs.current.forEach((project, i) => {
-      gsap.fromTo(
-        project,
-        {
-          y: 500 + i * 100,
-          opacity: 0,
-          scale: 0.6,
-          rotateY: -180,
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerEl,
+          start: 'top bottom', // 애니메이션 시작 지점
+          end: 'bottom top', // 애니메이션 종료 지점
+          scrub: 1,
+          toggleActions: 'play none none reverse',
+          markers: true,
         },
-        {
-          y: -50,
-          opacity: 1,
-          scale: 1,
-          rotateY: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: containerEl,
-            start: '+200 bottom', // 애니메이션 시작 지점
-            end: '+400 top', // 애니메이션 종료 지점
-            scrub: true,
-            toggleActions: 'play reverse play reverse',
-            markers: true,
+      });
+      timeline
+        .fromTo(
+          project,
+          {
+            y: +400 + i * 100,
+            opacity: 0,
+            scale: 0.6,
+            rotateY: -180,
           },
-        },
-      );
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            rotateY: 0,
+            duration: 2,
+          },
+        )
+        .fromTo(
+          project,
+          { y: 0, opacity: 1, scale: 1, rotateY: 0 },
+          {
+            y: -400 - i * 100,
+            opacity: 0,
+            scale: 0.6,
+            rotateY: -180,
+            duration: 2,
+          },
+        );
     });
   }, []);
 
