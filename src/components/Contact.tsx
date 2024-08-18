@@ -7,7 +7,6 @@ import style from '../style/components/Contact.module.scss';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
-  // 각 요소에 대한 ref 생성
   const containerRef = useRef(null);
   const emailRef = useRef(null);
   const githubRef = useRef(null);
@@ -32,7 +31,7 @@ export default function Contact() {
         duration: 0.7,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top bottom', // container 상단이 뷰포트 하단에 도달할 때 애니메이션 시작
+          start: 'top bottom',
           end: 'top top',
           toggleActions: 'play reverse play reverse',
           scrub: 1,

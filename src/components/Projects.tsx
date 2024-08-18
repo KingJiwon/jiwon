@@ -56,8 +56,8 @@ export default function Projects() {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: containerEl,
-          start: 'top bottom', // 애니메이션 시작 지점
-          end: 'bottom top', // 애니메이션 종료 지점
+          start: 'top bottom',
+          end: 'bottom top',
           scrub: 1,
           toggleActions: 'play none none reverse',
         },

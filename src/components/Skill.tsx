@@ -72,7 +72,6 @@ export default function Skill() {
       return 0;
     };
 
-    // GSAP timeline
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: containerEl,
@@ -83,7 +82,6 @@ export default function Skill() {
       },
     });
 
-    // elements
     const elements = [
       front.title,
       front.left,
@@ -96,7 +94,6 @@ export default function Skill() {
       tool.right,
     ];
 
-    // Animate
     timeline
       .fromTo(
         elements,
@@ -114,9 +111,7 @@ export default function Skill() {
           ease: 'power1.inOut',
         },
       )
-      // 중앙에 머무름
       .to(elements, { x: 0, y: 0, opacity: 1, duration: 1 }, '+=3')
-      // 동시에 사라지는 애니메이션
       .to(elements, {
         opacity: 0,
         x: (index) => calculateX(elements[index]),

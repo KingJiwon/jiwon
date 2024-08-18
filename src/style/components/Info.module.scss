@@ -24,6 +24,17 @@
     }
     .to_be {
       margin-bottom: 10px;
+      .to_be_content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2em;
+        p {
+          margin-left: 5em;
+          font-size: 1.8em;
+        }
+      }
     }
   }
 }

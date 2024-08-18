@@ -23,8 +23,8 @@ export default function Info() {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: containerEl,
-        start: '200 bottom', // 애니메이션 시작 지점
-        end: '600 top', // 애니메이션 종료 지점
+        start: '200 bottom',
+        end: '600 top',
         scrub: 1,
         toggleActions: 'play none none reverse',
       },
@@ -32,29 +32,18 @@ export default function Info() {
     timeline
       .fromTo(
         toBeEl,
-        { x: -400, opacity: 0 }, // 시작 상태
-        { x: 0, opacity: 1, duration: 3 }, // 도착 상태
+        { x: -400, opacity: 0 },
+        { x: 0, opacity: 1, duration: 3 },
       )
       .fromTo(
         educatedEl,
-        { x: 400, opacity: 0 }, // 시작 상태
-        { x: 0, opacity: 1, duration: 3 }, // 도착 상태
-        '-=3', // toBeEl과 동시에 시작하도록 설정
+        { x: 400, opacity: 0 },
+        { x: 0, opacity: 1, duration: 3 },
+        '-=3',
       )
-      .to(
-        [toBeEl, educatedEl],
-        { x: 0, opacity: 1, duration: 1 }, // 중앙에 머무름
-        '+=1', // 1초 동안 유지
-      )
-      .to(
-        toBeEl,
-        { x: 400, opacity: 0, duration: 3 }, // 종료 상태
-      )
-      .to(
-        educatedEl,
-        { x: -400, opacity: 0, duration: 3 }, // 종료 상태
-        '-=3', // toBeEl과 동시에 종료하도록 설정
-      );
+      .to([toBeEl, educatedEl], { x: 0, opacity: 1, duration: 1 }, '+=1')
+      .to(toBeEl, { x: 400, opacity: 0, duration: 3 })
+      .to(educatedEl, { x: -400, opacity: 0, duration: 3 }, '-=3');
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -92,7 +81,3 @@ export default function Info() {
     </div>
   );
 }
-/*
-start: '+400 bottom', // 애니메이션 시작 지점
-      end: '+300 top', // 애니메이션 종료 지점
-*/
