@@ -60,7 +60,6 @@ export default function Projects() {
           end: 'bottom top', // 애니메이션 종료 지점
           scrub: 1,
           toggleActions: 'play none none reverse',
-          markers: true,
         },
       });
       timeline

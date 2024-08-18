@@ -46,8 +46,8 @@ export default function Prologue() {
 
     ScrollTrigger.create({
       trigger: containerElement,
-      start: 'top bottom', // 컨테이너의 상단과 화면의 상단이 맞닿는 지점
-      end: '+400 top', // 컨테이너의 하단이 화면의 상단과 맞닿는 지점
+      start: 'top bottom',
+      end: '+400 top',
 
       scrub: 1,
 

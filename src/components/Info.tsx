@@ -71,7 +71,12 @@ export default function Info() {
             />
             To be...
           </div>
-          <div className={styles.to_be_content} />
+          <div className={styles.to_be_content}>
+            <p>꾸준한 성장을 원동력으로 삼는 개발자</p>
+            <p>기록의 가치를 알고 이용할 수 있는 개발자</p>
+            <p>뛰어난 커뮤니케이션 능력으로 누구와도 잘맞는 개발자</p>
+            <p>다양한 방면에서 사용자의 니즈를 파악하는 개발자</p>
+          </div>
         </div>
         <div ref={educatedRef} className={styles.educated}>
           <div className={styles.educated_title}>

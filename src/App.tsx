@@ -7,6 +7,7 @@ import Prologue from './components/Prologue';
 import Info from './components/Info';
 import Skill from './components/Skill';
 import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Info />
         <Skill />
         <Projects />
+        <Contact />
       </VideoBackground>
     </div>
   );
