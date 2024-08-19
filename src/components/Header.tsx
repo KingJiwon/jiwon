@@ -1,16 +1,29 @@
 import React from 'react';
 import style from '../style/components/Header.module.scss';
 
-export default function Header() {
+interface HeaderProps {
+  onNavClick: (section: string) => void;
+  activeSection: string;
+}
+
+export default function Header({ onNavClick, activeSection }: HeaderProps) {
   return (
     <div className={style.container}>
       <div className={style.inner}>
         <ul className={style.navigator}>
-          <li>Prologue</li>
-          <li>Info</li>
-          <li>Skills</li>
-          <li>Projects</li>
-          <li>Contact</li>
+          {['Prologue', 'Info', 'Skills', 'Projects', 'Contact'].map(
+            (section) => (
+              <li key={section}>
+                <button
+                  type="button"
+                  onClick={() => onNavClick(section)}
+                  className={activeSection === section ? style.active : ''}
+                >
+                  {section}
+                </button>
+              </li>
+            ),
+          )}
         </ul>
       </div>
     </div>
