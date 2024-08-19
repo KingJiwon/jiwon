@@ -10,6 +10,9 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
   return (
     <div className={style.container}>
       <div className={style.inner}>
+        <div className={style.logo}>
+          <p>JIWON</p>
+        </div>
         <ul className={style.navigator}>
           {['Prologue', 'Info', 'Skills', 'Projects', 'Contact'].map(
             (section) => (
