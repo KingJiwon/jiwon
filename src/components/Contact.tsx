@@ -35,7 +35,6 @@ export default function Contact() {
           end: 'top top',
           toggleActions: 'play reverse play reverse',
           scrub: 1,
-          markers: true,
         },
       },
     );
