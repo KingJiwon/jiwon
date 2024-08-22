@@ -135,4 +135,9 @@ body {
   line-height: 1.5;
   font-family: $main-font-regular;
   color: $main-font-color;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
